@@ -1,5 +1,9 @@
 import React from "react";
-function Index() {
+import axios from "axios";
+import baseUrl from "../utils/baseUrl";
+
+function Index({ user, userFollowStats }) {
+  console.log({ user, userFollowStats });
   return <div>Homepage</div>;
 }
 

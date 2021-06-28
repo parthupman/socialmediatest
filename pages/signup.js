@@ -68,6 +68,28 @@ function Signup() {
     isUser ? setSubmitDisabled(false) : setSubmitDisabled(true);
   }, [user]);
 
+  // const checkUsername = async () => {
+  //     setUsernameLoading(true);
+  //     try {
+  //       cancel && cancel();
+  //       const CancelToken = axios.CancelToken;
+  //       const res = await axios.get(`${baseUrl}/api/signup/${username}`, {
+  //         cancelToken: new CancelToken((canceler) => {
+  //           cancel = canceler;
+  //         }),
+  //       });
+  //       if (res.data === "Avilable") {
+  //         if(errorMsg!==null) setErrorMsg(null)
+  //         setUsernameAvilable(true);
+  //         setUser((prev) => ({ ...prev, username }));
+  //       }
+  //     } catch (error) {
+  //       setUsernameAvilable(false)
+  //       setErrorMsg("Username not avilable");
+  //     }
+  //     setUsernameLoading(false);
+  //   };
+
   const checkUsername = async () => {
     setUsernameLoading(true);
     try {
@@ -79,10 +101,12 @@ function Signup() {
         }),
       });
       if (res.data === "Avilable") {
+        if (errorMsg !== null) setErrorMsg(null);
         setUsernameAvilable(true);
         setUser((prev) => ({ ...prev, username }));
       }
     } catch (error) {
+      setUsernameAvilable(false);
       setErrorMsg("Username not avilable");
     }
     setUsernameLoading(false);
