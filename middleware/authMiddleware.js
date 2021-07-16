@@ -13,8 +13,8 @@ module.exports = (req, res, next) => {
 
     req.userId = userId;
     next();
-  } catch (error) {
-    console.error(error);
+  } catch (errors) {
+    console.error(errors);
     return res.status(401).send(`Unauthorized`);
   }
 };
