@@ -6,18 +6,24 @@ import { Segment } from "semantic-ui-react";
 import { parseCookies } from "nookies";
 import { NoPosts } from "../components/Layout/NoData";
 import CreatePost from "../components/Post/CreatePost";
+import { PostDeleteToastr } from "../components/Layout/Toastr";
 
 function Index({ user, postsData, errorLoading }) {
   const [posts, setPosts] = useState(postsData);
-  const [showToastr, setshowToastr] = useState(false);
+  const [showToastr, setShowToastr] = useState(false);
   useEffect(() => {
     document.title = `Welcome, ${user.name.split(" ")[0]}`;
   }, []);
+
+  useEffect(() => {
+    showToastr && setTimeout(() => setShowToastr(false), 3000);
+  }, [showToastr]);
 
   if (posts.length === 0 || errorLoading) return <NoPosts />;
 
   return (
     <>
+      {showToastr && <PostDeleteToastr />}
       <Segment>
         <CreatePost user={user} setPosts={setPosts} />
         {posts.map((post) => (
@@ -26,7 +32,7 @@ function Index({ user, postsData, errorLoading }) {
             post={post}
             user={user}
             setPosts={setPosts}
-            setshowToastr={setshowToastr}
+            setShowToastr={setShowToastr}
           />
         ))}
       </Segment>

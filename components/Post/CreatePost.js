@@ -52,10 +52,13 @@ function Createpost({ user, setPosts }) {
       newPost.location,
       picUrl,
       setPosts,
+      setNewPost,
       setError
     );
     setMedia(null);
-    setMediaPreview(null), setLoading(false);
+    setMediaPreview(null);
+
+    setLoading(false);
   };
 
   return (
