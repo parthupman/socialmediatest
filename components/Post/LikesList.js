@@ -14,8 +14,8 @@ function LikesList({ postId, trigger }) {
   const getLikesList = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${baseUrl}/api/posts/liike/${postId}`, {
-        headers: { Authorization: cookie.get("token") },
+      const res = await axios.get(`${baseUrl}/api/posts/like/${postId}`, {
+        headers: { Authorization: cookie.get("token") }
       });
       setLikesList(res.data);
     } catch (error) {
@@ -43,11 +43,11 @@ function LikesList({ postId, trigger }) {
                 overflow: "auto",
                 maxHeight: "15rem",
                 height: "15rem",
-                minWidth: "210px",
+                minWidth: "210px"
               }}
             >
               <List selection size="large">
-                {likesList.map((like) => (
+                {likesList.map(like => (
                   <List.Item key={like._id}>
                     <Image avatar src={like.user.profilePicUrl} />
 
