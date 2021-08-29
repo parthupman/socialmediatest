@@ -1,7 +1,14 @@
+import React from "react";
 import { useRouter } from "next/router";
 
-export default function ProfilePage() {
+function ProfilePage() {
   const router = useRouter();
 
-  return <>{router.query.username}</>;
+  const { username, pageNumber } = router.query;
+
+  return;
+  <div>
+    {username}, pageNumber={pageNumber}{" "}
+  </div>;
 }
+export default ProfilePage;
